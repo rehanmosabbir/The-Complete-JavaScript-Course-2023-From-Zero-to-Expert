@@ -58,7 +58,7 @@ console.log(typeof null);
 year = 1989;
 console.log(year);
 console.log(typeof year);
-*/
+
 
 // let const and var
 
@@ -76,3 +76,39 @@ console.log(firstName);
 
 lastName = "Rehan";
 console.log(lastName);
+
+
+// Math Operators
+const now = 2023;
+const ageRehan = now - 1989;
+const ageRifat = now - 1995;
+
+console.log(ageRehan, ageRifat);
+console.log(ageRehan * 2, ageRehan / 10, 2 ** 3);
+// 2 ** 3 means 2 to the power of 3 // 2 * 2 * 2
+
+let firstName = "Mosabbir";
+let lastName = "Rehan";
+console.log(firstName + " " + lastName);
+
+// Assignment Operators
+let x = 100;
+x += 10;
+x -= 20;
+x *= 2;
+x /= 10;
+
+x++;
+x--;
+x--;
+console.log(x);
+
+// Comparison Operators
+console.log(ageRehan > ageRifat);
+console.log(ageRehan >= 18);
+
+const isOldEnough = ageRehan >= 18;
+console.log(isOldEnough);
+
+console.log(now - 1989 > now - 1995);
+*/
