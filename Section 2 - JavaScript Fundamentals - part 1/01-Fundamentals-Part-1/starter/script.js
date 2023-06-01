@@ -112,3 +112,17 @@ console.log(isOldEnough);
 
 console.log(now - 1989 > now - 1995);
 */
+
+// Operator Precedence
+const now = 2023;
+const ageRehan = now - 1989;
+const ageRaifah = now - 2018;
+
+console.log(ageRehan, ageRaifah);
+
+const ageAverage = (ageRaifah + ageRehan) / 2;
+console.log(ageRehan, ageRaifah, ageAverage);
+console.log(25 - 10 - 5);
+console.log(now - 1989 > now - 2018);
+let x = (y = 25 - 10 - 5);
+console.log(x, y);
