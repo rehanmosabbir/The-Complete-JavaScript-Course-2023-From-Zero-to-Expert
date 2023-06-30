@@ -1,8 +1,7 @@
 'use strict';
 
 // Data needed for a later exercise
-const flights =
-  '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
+
 const weekdays = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
 const openingHours = {
   [weekdays[3]]: {
@@ -49,6 +48,57 @@ const restaurant = {
   },
 };
 
+/*
+// split and join
+console.log('a+very+nice+string'.split('+'));
+console.log('Md. Mosabbir Hossain'.split(' '));
+
+const [firstName, lastName] = 'Mosabbir Hossain'.split(' ');
+const newName = ['Md.', firstName, lastName].join(' ');
+console.log(newName);
+
+const capitalizeName = function (name) {
+  const newNameArr = [];
+  const nameArr = name.split(' ');
+  for (const n of nameArr) {
+    // const firstLetterUpper = n[0].toUpperCase();
+    // const newN = firstLetterUpper + n.slice(1);
+    // newNameArr.push(newN);
+    newNameArr.push(n.replace(n[0], n[0].toUpperCase()));
+  }
+  console.log(newNameArr.join(' '));
+};
+
+capitalizeName('jessica ann michael davis');
+capitalizeName('md. mosabbir hossain');
+
+// padding
+const message = 'Go to gate 23';
+console.log(message.padStart(20, '+').padEnd(30, '+'));
+console.log('Jonas'.padStart(20, '+').padEnd(30, '+'));
+
+const maskCreditCard = function (number) {
+  const str = number + '';
+  const last = str.slice(-4);
+  return last.padStart(str.length, '*');
+};
+
+console.log(maskCreditCard(56489712));
+console.log(maskCreditCard(5648971254236987));
+
+// Repeat
+const message2 = ' Bad weather ... All departures delayed ...';
+console.log(message2.repeat(5));
+
+const planesInLine = function (n) {
+  console.log(`There are ${n} planes in line ${'✈️'.repeat(n)}`);
+};
+
+planesInLine(5);
+planesInLine(11);
+planesInLine(3);
+*/
+/*
 // replacing
 const priceGB = '277,18€';
 const priceUS = priceGB.replace(',', '.').replace('€', '$');
@@ -82,7 +132,7 @@ const checkBaggage = function (items) {
 checkBaggage('I have a laptop, some food and a pocket Knife');
 checkBaggage('socks and camera');
 checkBaggage('Got some snacks and a gun for protection');
-
+*/
 /*
 const airline = 'TAP Air Portugal';
 const plane = 'A320';
@@ -785,3 +835,73 @@ for (const [key, value] of gameEvents) {
     : console.log(`[SECOND HALF] ${key} : ${value}`);
 }
 */
+/*
+///////////////////////////////
+///////// Coding Challenge #4
+/////////////////
+
+Write a program that receives a list of variable names written in underscore_case 
+and convert them to camelCase.
+The input will come from a textarea inserted into the DOM (see code below to 
+insert the elements), and conversion will happen when the button is pressed.
+Test data (pasted to textarea, including spaces):
+underscore_case
+first_name
+Some_Variable 
+ calculate_AGE
+delayed_departure
+Should produce this output (5 separate console.log outputs):
+underscoreCase ✅
+firstName ✅✅
+someVariable ✅✅✅
+calculateAge ✅✅✅✅
+delayedDeparture ✅✅✅✅✅
+Hints:
+§ Remember which character defines a new line in the textarea �
+§ The solution only needs to work for a variable made out of 2 words, like a_b
+§ Start without worrying about the ✅. Tackle that only after you have the variable 
+name conversion working �
+§ This challenge is difficult on purpose, so start watching the solution in case 
+you're stuck. Then pause and continue!
+Afterwards, test with your own test data!
+GOOD LUCK �
+*/
+/*
+document.body.append(document.createElement('textarea'));
+document.body.append(document.createElement('button'));
+
+const btn = document.querySelector('button');
+btn.addEventListener('click', function () {
+  const text = document.querySelector('textarea').value;
+  const splitedText = text.split('\n');
+  for (const [i, text] of splitedText.entries()) {
+    const textArr = text.trim().split('_');
+    const first = textArr[0].toLowerCase();
+    const last = textArr[1].toLowerCase();
+    const newStr = first + last.replace(last[0], last[0].toUpperCase());
+    console.log(newStr.padEnd(20, ' ') + '✅'.repeat(i + 1));
+  }
+});
+*/
+
+const flights =
+  '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
+
+const splitedFlight = flights.split('+');
+
+for (const text of splitedFlight) {
+  const [msg, c1, c2, time] = text.split(';');
+  const convMsg = msg.slice(1).split('_').join(' ');
+  const [hour, min] = time.split(':');
+  convMsg.includes('Delayed')
+    ? console.log(
+        `🔴${convMsg} from ${c1.slice(0, 3).toUpperCase()} to ${c2
+          .slice(0, 3)
+          .toUpperCase()} (${hour}h${min})`.padStart(50, ' ')
+      )
+    : console.log(
+        `${convMsg} from ${c1.slice(0, 3).toUpperCase()} to ${c2
+          .slice(0, 3)
+          .toUpperCase()} (${hour}h${min})`.padStart(50, ' ')
+      );
+}
